@@ -51,14 +51,11 @@ const VitrolaList = () => {
       <h1>Lista de Música</h1>
       <hr />
       {music.map((track) => (
-        <Card key={track.id} className="mb-3" style={{ width: "18rem", marginLeft: "220px"}}>
+        <Card key={track.id} className="mb-3" style={{ width: "18rem", marginLeft: "220px"}} onClick={() => handleShowConfirmationModal(track)}>
           <Card.Body className="text-center">
             <FontAwesomeIcon icon={faMusic} style={{ color: "#731101" }} />
             <Card.Title>{track.titulo}</Card.Title>
             <Card.Text>{track.artist}</Card.Text>
-            <Button onClick={() => handleShowConfirmationModal(track)}  style={{ backgroundColor: "#731101" }}>
-              Agregar a la lista de espera
-            </Button>
           </Card.Body>
           <ListGroup className="list-group-flush"></ListGroup>
         </Card>
@@ -86,42 +83,3 @@ const VitrolaList = () => {
 };
 
 export default VitrolaList;
-
-/*import { useState, useEffect } from "react";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMusic } from '@fortawesome/free-solid-svg-icons'
-
-
-
-const VitrolaList = () => {
-  const [music, setMusic] = useState([]);
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/myapp/music/")
-      .then((response) => response.json())
-      .then((data) => setMusic(data.music));
-  }, []);
-
-  return (
-    <div className="container py-4 col-6">
-      <h1>Lista de Musica</h1>
-      <hr />
-      {music.map((track) => (
-        <Card key={track.id} className="mb-3 ms-5" style={{width: "18rem"}}>
-          <Card.Body>
-            <FontAwesomeIcon icon={faMusic} style={{ color: "#731101" }}/>
-            <Card.Title>{track.titulo}</Card.Title>
-            <Card.Text>{track.artist}</Card.Text>
-          </Card.Body>
-          <ListGroup className="list-group-flush">
-          </ListGroup>
-        </Card>
-      ))}
-    </div>
-  );
-};
-
-export default VitrolaList;*/
